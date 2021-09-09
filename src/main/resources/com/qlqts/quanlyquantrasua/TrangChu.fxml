@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="318.0" prefWidth="550.0" stylesheets="@css/trangchu.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlqts.quanlyquantrasua.TrangChuController">
+   <left>
+      <AnchorPane prefHeight="376.0" prefWidth="233.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="333.0" fitWidth="239.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@hinhanh/hinh1.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="235.0" prefWidth="312.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="43.0" layoutY="142.0" mnemonicParsing="false" onAction="#ChuyenTrangDangNhap" prefHeight="33.0" prefWidth="230.0" style="-fx-background-color: #022648;" text="ĐĂNG NHẬP" textFill="WHITE" />
+            <AnchorPane prefHeight="83.0" prefWidth="315.0">
+               <children>
+                  <ImageView fitHeight="94.0" fitWidth="292.0" layoutX="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@hinhanh/Trangchu.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Button layoutX="43.0" layoutY="212.0" mnemonicParsing="false" onAction="#ChuyenTrangDangKy" prefHeight="33.0" prefWidth="230.0" style="-fx-background-color: #022648;" text="ĐĂNG KÝ" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
