@@ -1,16 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="555.0" prefWidth="609.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<AnchorPane id="AnchorPane" prefHeight="617.0" prefWidth="509.0" style="-fx-background-color: #022648;" stylesheets="@css/dangKy.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlqts.quanlyquantrasua.DangKyController">
    <children>
-      <ImageView fitHeight="443.0" fitWidth="351.0" layoutX="169.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+      <Text fx:id="dangKy" fill="#f5f4f4" layoutX="182.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ĐĂNG KÝ" wrappingWidth="164.24407958984375" />
+      <GridPane layoutX="53.0" layoutY="52.0" prefHeight="433.0" prefWidth="422.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="235.0" minWidth="10.0" prefWidth="128.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.6666666666667" minWidth="10.0" prefWidth="294.6666666666667" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="253.66665649414062" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="246.3333282470703" minHeight="10.0" prefHeight="74.33334350585936" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="280.99998982747394" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="280.99998982747394" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="280.99998982747394" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="280.99998982747394" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="280.99998982747394" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="280.99998982747394" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="280.99998982747394" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label prefHeight="17.0" prefWidth="61.0" text="Họ" textFill="WHITE" />
+            <Label text="Tên" textFill="WHITE" GridPane.rowIndex="1" />
+            <Label text="Ngày Sinh" textFill="WHITE" GridPane.rowIndex="2" />
+            <Label text="Giới tính" textFill="WHITE" GridPane.rowIndex="3" />
+            <Label text="Điện thoại" textFill="WHITE" GridPane.rowIndex="4" />
+            <Label text="Email" textFill="WHITE" GridPane.rowIndex="5" />
+            <Label text="Tên tài khoản" textFill="WHITE" GridPane.rowIndex="7" />
+            <Label text="Mật Khẩu" textFill="WHITE" GridPane.rowIndex="8" />
+            <TextField fx:id="hoTxtF" GridPane.columnIndex="1" />
+            <TextField fx:id="sdtTxtF" promptText="081288xxxx" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="emailTxtF" promptText="abc123@gmail.com" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="tenTkhoanTxtF" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField fx:id="matKhauTxtF" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <DatePicker fx:id="ngaySinhDp" prefHeight="25.0" prefWidth="148.0" promptText="yyyy-mm-dd" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="gioiTinhCmb" prefWidth="150.0" promptText="Giới Tính" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label layoutX="10.0" layoutY="267.0" text="Chức vụ" textFill="WHITE" GridPane.rowIndex="6" />
+            <TextField fx:id="chucVuTxtF" editable="false" layoutX="138.0" layoutY="21.0" text="Nhân viên" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="tenTxtF" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <Button layoutX="193.0" layoutY="541.0" mnemonicParsing="false" onAction="#XacNhanDangKy" prefHeight="48.0" prefWidth="124.0" text="Xác Nhận" />
+      <ImageView fitHeight="45.0" fitWidth="49.0" layoutX="4.0" layoutY="7.0" onMouseClicked="#thoatOnMouseClick" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@hinhanh/hinh1.png" />
+            <Image url="@hinhanh/quaylai.png" />
          </image>
       </ImageView>
+      <Label fx:id="canhBaoDangKy" alignment="CENTER" layoutX="46.0" layoutY="510.0" prefHeight="24.0" prefWidth="435.0" />
    </children>
 </AnchorPane>

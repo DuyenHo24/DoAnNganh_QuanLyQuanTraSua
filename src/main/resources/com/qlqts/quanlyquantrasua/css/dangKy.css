@@ -15,5 +15,17 @@ and open the template in the editor.
 
 .label {
     -fx-font-size : 20;
+    -fx-font-family : Cambria;
+}
 
+.button {
+    -fx-font-family : Asap SemiBold;
+    -fx-font-size : 22;
+    -fx-text-fill : whitesmoke;
+    -fx-background-color : #763626; 
+}
+
+#canhBaoDangKy {
+    -fx-text-fill : red;
+    -fx-font-size : 14;
 }

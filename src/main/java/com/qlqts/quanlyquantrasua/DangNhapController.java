@@ -5,7 +5,7 @@
  */
 package com.qlqts.quanlyquantrasua;
 
-import com.qlqts.quanlyquantrasua.service.KetNoiCSDL;
+import com.qlqts.quanlyquantrasua.dichvu.KetNoiCSDL;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -59,8 +60,14 @@ public class DangNhapController implements Initializable{
             truyVan.setString(2, dienPasswordField.getText());
             kqua = truyVan.executeQuery();
             if (kqua.next()){
-                
+                Alert a = new Alert(Alert.AlertType.INFORMATION);
+                a.setContentText("Đăng nhập thành công");
+                a.showAndWait();
+                App.setRoot("TrangChu");
+            } else {
+                canhBaoDangNhap.setText("Sai tên đăng nhập hoặc mật khẩu!");
             }
+            
         } catch (Exception e) {
         }
     }

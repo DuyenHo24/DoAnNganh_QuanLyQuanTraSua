@@ -1,8 +1,8 @@
-com\qlqts\quanlyquantrasua\service\KetNoiDB.class
+com\qlqts\quanlyquantrasua\dichvu\KetNoiCSDL.class
 com\qlqts\quanlyquantrasua\DangKyController.class
 com\qlqts\quanlyquantrasua\App.class
+com\qlqts\quanlyquantrasua\dichvu\DangKy_dichvu.class
 module-info.class
-com\qlqts\quanlyquantrasua\PrimaryController.class
+com\qlqts\quanlyquantrasua\pojo\NhanVien.class
 com\qlqts\quanlyquantrasua\TrangChuController.class
 com\qlqts\quanlyquantrasua\DangNhapController.class
-com\qlqts\quanlyquantrasua\SecondaryController.class
