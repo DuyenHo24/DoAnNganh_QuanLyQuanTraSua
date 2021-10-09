@@ -5,40 +5,35 @@
  */
 package com.qlqts.quanlyquantrasua.pojo;
 
-import java.sql.Date;
-
 /**
  *
  * @author ASUS
  */
-public class NhanVien {
+public class QuanLyNhanVien {
+    private int maNV;
     private String hoNV;
     private String tenNV;
     private String ngaySinh;
     private String gioiTinh;
     private String sdt;
     private String email;
-    private String tenTK;
-    private String matKhau;
     private String chucVu;
 
-    public NhanVien(String ho, String ten, String ns, String gt, String sdt, String email, 
-            String tentk, String mk, String chucVu) {
+    public QuanLyNhanVien(int Ma, String ho, String ten, String ns, String gt, String sdt, String email, String chucVu) {
+        this.maNV = Ma;
         this.hoNV = ho;
         this.tenNV = ten;
         this.ngaySinh = ns;
         this.gioiTinh = gt;
         this.sdt = sdt;
         this.email = email;
-        this.tenTK = tentk;
-        this.matKhau = mk;
         this.chucVu = chucVu;
     }
-    
-    public NhanVien(){
-    
-    }
 
+    public QuanLyNhanVien() {
+    }
+    
+    
     /**
      * @return the hoNV
      */
@@ -81,6 +76,19 @@ public class NhanVien {
         this.ngaySinh = ngaySinh;
     }
 
+    /**
+     * @return the gioiTinh
+     */
+    public String getGioiTinh() {
+        return gioiTinh;
+    }
+
+    /**
+     * @param gioiTinh the gioiTinh to set
+     */
+    public void setGioiTinh(String gioiTinh) {
+        this.gioiTinh = gioiTinh;
+    }
 
     /**
      * @return the sdt
@@ -111,34 +119,6 @@ public class NhanVien {
     }
 
     /**
-     * @return the tenTK
-     */
-    public String getTenTK() {
-        return tenTK;
-    }
-
-    /**
-     * @param tenTK the tenTK to set
-     */
-    public void setTenTK(String tenTK) {
-        this.tenTK = tenTK;
-    }
-
-    /**
-     * @return the matKhau
-     */
-    public String getMatKhau() {
-        return matKhau;
-    }
-
-    /**
-     * @param matKhau the matKhau to set
-     */
-    public void setMatKhau(String matKhau) {
-        this.matKhau = matKhau;
-    }
-
-    /**
      * @return the chucVu
      */
     public String getChucVu() {
@@ -153,16 +133,17 @@ public class NhanVien {
     }
 
     /**
-     * @return the gioiTinh
+     * @return the maNV
      */
-    public String getGioiTinh() {
-        return gioiTinh;
+    public int getMaNV() {
+        return maNV;
     }
 
     /**
-     * @param gioiTinh the gioiTinh to set
+     * @param maNV the maNV to set
      */
-    public void setGioiTinh(String gioiTinh) {
-        this.gioiTinh = gioiTinh;
+    public void setMaNV(int maNV) {
+        this.maNV = maNV;
     }
+    
 }

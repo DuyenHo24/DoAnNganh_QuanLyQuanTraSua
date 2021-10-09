@@ -6,11 +6,14 @@
 package com.qlqts.quanlyquantrasua;
 
 import com.qlqts.quanlyquantrasua.dichvu.KetNoiCSDL;
+
+import com.qlqts.quanlyquantrasua.pojo.NhanVien;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,7 +28,7 @@ import javafx.scene.control.TextField;
  *
  * @author ASUS
  */
-public class DangNhapController implements Initializable{
+public class DangNhapDieuKhien implements Initializable{
     @FXML
     private Label canhBaoDangNhap;
 //    @FXML
@@ -42,9 +45,14 @@ public class DangNhapController implements Initializable{
     PreparedStatement truyVan = null;
     
     
-    public void dangNhapButtonOnAction(ActionEvent e) {
+    public void dangNhapButtonOnAction(ActionEvent e) throws SQLException, IOException{
         if(tenDNTextField.getText().isBlank() == false && dienPasswordField.getText().isBlank() == false) {
-            xacNhanDangNhap();
+            xacNhanDangNhap(); 
+            if (kiemTraChucVu(this.tenDNTextField.getText()).equals("Quản Lý")) {
+                    App.setRoot("ChonChucNangQuanLy");
+                } else {
+                    App.setRoot("ChucNangBanHang");
+                }
         } else {
             canhBaoDangNhap.setText("Vui lòng điền tên đăng nhập và mật khẩu");
         }
@@ -60,16 +68,35 @@ public class DangNhapController implements Initializable{
             truyVan.setString(2, dienPasswordField.getText());
             kqua = truyVan.executeQuery();
             if (kqua.next()){
+
                 Alert a = new Alert(Alert.AlertType.INFORMATION);
                 a.setContentText("Đăng nhập thành công");
                 a.showAndWait();
-                App.setRoot("TrangChu");
+                
             } else {
                 canhBaoDangNhap.setText("Sai tên đăng nhập hoặc mật khẩu!");
+                this.tenDNTextField.clear();
+                this.dienPasswordField.clear();
             }
             
         } catch (Exception e) {
         }
+
+
+    }
+    
+    public static String kiemTraChucVu(String tenTK) throws SQLException{
+        String sql = "Select chuc_vu from nhan_vien where ten_tkhoan = ?";
+        Connection knoi = KetNoiCSDL.layKnoi();
+        PreparedStatement truyVan = knoi.prepareStatement(sql);
+        truyVan.setString(1, tenTK);
+        
+        ResultSet kq = truyVan.executeQuery();
+        String chucVu = "";
+        while (kq.next()) {
+            chucVu = kq.getString("chuc_vu");
+        }
+        return chucVu;
     }
     
     public void thoatButtonOnAction() throws IOException{

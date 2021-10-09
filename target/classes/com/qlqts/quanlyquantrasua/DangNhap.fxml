@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="318.0" prefWidth="550.0" stylesheets="@css/dangNhap.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlqts.quanlyquantrasua.DangNhapController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="318.0" prefWidth="550.0" stylesheets="@css/dangNhap.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlqts.quanlyquantrasua.DangNhapDieuKhien">
    <left>
       <AnchorPane prefHeight="376.0" prefWidth="233.0" BorderPane.alignment="CENTER">
          <children>

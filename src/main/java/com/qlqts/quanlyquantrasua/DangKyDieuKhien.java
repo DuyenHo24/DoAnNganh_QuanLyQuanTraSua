@@ -10,7 +10,6 @@ import com.qlqts.quanlyquantrasua.pojo.NhanVien;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Dictionary;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,13 +22,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 /**
  *
  * @author ASUS
  */
-public class DangKyController implements Initializable{
+public class DangKyDieuKhien implements Initializable{
     
     @FXML
     private TextField hoTxtF;
@@ -48,7 +48,7 @@ public class DangKyController implements Initializable{
     @FXML
     private TextField tenTkhoanTxtF;
     @FXML
-    private TextField matKhauTxtF;
+    private PasswordField matKhauTxtF;
     @FXML
     private Label canhBaoDangKy;
     

@@ -8,5 +8,5 @@ module com.qlqts.quanlyquantrasua {
     
     opens com.qlqts.quanlyquantrasua to javafx.fxml;
     exports com.qlqts.quanlyquantrasua;
-    //exports com.qlqts.quanlyquantrasua.pojo;
+    exports com.qlqts.quanlyquantrasua.pojo;
 }

@@ -17,7 +17,7 @@ import javafx.fxml.Initializable;
  *
  * @author ASUS
  */
-public class TrangChuController implements Initializable {
+public class TrangChuDieuKhien implements Initializable {
     
     @FXML
     public void ChuyenTrangDangNhap() throws IOException {
@@ -27,6 +27,10 @@ public class TrangChuController implements Initializable {
     @FXML
     public void ChuyenTrangDangKy() throws IOException {
         App.setRoot("DangKy");
+    }
+    
+    public void gioiThieuOnMouseClick() throws IOException{
+        App.setRoot("GioiThieu");
     }
     /**
      * Initializes the controller class.
