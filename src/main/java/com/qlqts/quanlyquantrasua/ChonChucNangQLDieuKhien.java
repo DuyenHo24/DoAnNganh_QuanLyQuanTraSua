@@ -38,4 +38,9 @@ public class ChonChucNangQLDieuKhien {
     public void ChuyenTrangQLMonAn() throws IOException{
         App.setRoot("QuanLyMonAn");
     }
+    
+    @FXML
+    public void ChuyenTrangQLLoaiMonAn() throws IOException{
+        App.setRoot("QuanLyLoaiMon");
+    }
 }

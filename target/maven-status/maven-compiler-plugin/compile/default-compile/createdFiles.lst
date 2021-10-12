@@ -1,13 +1,16 @@
 com\qlqts\quanlyquantrasua\dichvu\QuanLyBan_DichVu.class
+com\qlqts\quanlyquantrasua\QuanLyLoaiMonDieuKhien.class
 com\qlqts\quanlyquantrasua\App.class
 module-info.class
 com\qlqts\quanlyquantrasua\pojo\NhanVien.class
 com\qlqts\quanlyquantrasua\DangNhapDieuKhien.class
 com\qlqts\quanlyquantrasua\QuanLyNhanVienDieuKhien.class
+com\qlqts\quanlyquantrasua\pojo\QuanLyLoaiMon.class
 com\qlqts\quanlyquantrasua\dichvu\QuanLyNhanVien_dichvu.class
 com\qlqts\quanlyquantrasua\pojo\QuanLyNhanVien.class
 com\qlqts\quanlyquantrasua\dichvu\KetNoiCSDL.class
 com\qlqts\quanlyquantrasua\QuanLyBanDieuKhien.class
+com\qlqts\quanlyquantrasua\dichvu\QuanLyLoaiMon_DichVu.class
 com\qlqts\quanlyquantrasua\dichvu\DangKy_dichvu.class
 com\qlqts\quanlyquantrasua\DangKyDieuKhien.class
 com\qlqts\quanlyquantrasua\GioiThieuDieuKhien.class

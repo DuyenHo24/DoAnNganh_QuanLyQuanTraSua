@@ -14,10 +14,11 @@
          </image>
       </ImageView>
       <Label fx:id="QuanLyQTS" layoutX="78.0" layoutY="32.0" stylesheets="@css/ChonChucNangQuanLy.css" text="QUẢN LÝ QUÁN TRÀ SỮA" />
-      <Button fx:id="btQLMonAn" layoutX="79.0" layoutY="119.0" mnemonicParsing="false" onAction="#ChuyenTrangQLMonAn" prefHeight="27.0" prefWidth="133.0" text="QUẢN LÝ MÓN ĂN" />
+      <Button fx:id="btQLMonAn" layoutX="79.0" layoutY="119.0" mnemonicParsing="false" onAction="#ChuyenTrangQLMonAn" prefHeight="28.0" prefWidth="153.0" text="QUẢN LÝ MÓN ĂN" />
       <Button fx:id="btQLNhanVien" layoutX="338.0" layoutY="119.0" mnemonicParsing="false" onAction="#ChuyenTrangQLNV" prefHeight="27.0" prefWidth="153.0" text="QUẢN LÝ NHÂN VIÊN" />
-      <Button fx:id="btQLyBan" layoutX="79.0" layoutY="188.0" mnemonicParsing="false" onAction="#ChuyenTrangQLBan" prefHeight="27.0" prefWidth="133.0" text="QUẢN LÝ BÀN" />
+      <Button fx:id="btQLyBan" layoutX="79.0" layoutY="188.0" mnemonicParsing="false" onAction="#ChuyenTrangQLBan" prefHeight="28.0" prefWidth="153.0" text="QUẢN LÝ BÀN" />
       <Button fx:id="btBanHang" layoutX="337.0" layoutY="188.0" mnemonicParsing="false" onAction="#ChuyenTrangBanHang" prefHeight="27.0" prefWidth="153.0" text="BÁN HÀNG" />
       <Button fx:id="btDangXuat" layoutX="337.0" layoutY="251.0" mnemonicParsing="false" onAction="#DangXuat" prefHeight="28.0" prefWidth="153.0" text="ĐĂNG XUẤT" />
+      <Button fx:id="btQLLoaiMon" layoutX="79.0" layoutY="251.0" mnemonicParsing="false" onAction="#ChuyenTrangQLLoaiMonAn" prefHeight="28.0" prefWidth="153.0" text="QUẢN LÝ LOẠI MÓN" />
    </children>
 </AnchorPane>
