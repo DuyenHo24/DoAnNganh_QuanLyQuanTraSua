@@ -18,7 +18,7 @@ import javafx.collections.ObservableList;
  * @author ASUS
  */
 public class QuanLyLoaiMon_DichVu {
-    public static ObservableList<QuanLyLoaiMon> layDLLoaiBan(){
+    public static ObservableList<QuanLyLoaiMon> layDLLoaiMon(){
         Connection knoi = KetNoiCSDL.layKnoi();
         ObservableList<QuanLyLoaiMon> ds = FXCollections.observableArrayList();
         try {

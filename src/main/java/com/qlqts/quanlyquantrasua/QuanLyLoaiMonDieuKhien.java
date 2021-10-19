@@ -48,7 +48,7 @@ public class QuanLyLoaiMonDieuKhien implements Initializable{
     public void HienThiDanhSachLoaiMon() throws SQLException{
         cotMaLoai.setCellValueFactory(new PropertyValueFactory<>("maLoai"));
         cotTenLoai.setCellValueFactory(new PropertyValueFactory<>("tenLoai"));
-        dulieu = FXCollections.observableArrayList(QuanLyLoaiMon_DichVu.layDLLoaiBan());
+        dulieu = FXCollections.observableArrayList(QuanLyLoaiMon_DichVu.layDLLoaiMon());
         tbvQLLM.setItems(dulieu);
     }
     

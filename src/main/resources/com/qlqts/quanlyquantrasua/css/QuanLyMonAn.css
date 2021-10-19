@@ -1,0 +1,19 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 18, 2021, 3:36:19 PM
+    Author     : ASUS
+*/
+
+#lbQLMA, #lbLM{
+    -fx-font-size: 40;
+    -fx-font-family: "SVN-Gotham Bold";
+    -fx-text-fill: brown;
+}
+.button {
+    -fx-background-color: #FAB180;
+    -fx-font-family: "SVN-Gotham Bold";
+}
