@@ -7,6 +7,7 @@ package com.qlqts.quanlyquantrasua;
 
 import com.qlqts.quanlyquantrasua.dichvu.QuanLyBan_DichVu;
 import com.qlqts.quanlyquantrasua.pojo.QuanLyBan;
+import com.qlqts.quanlyquantrasua.pojo.QuanLyNhanVien;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -15,6 +16,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -36,6 +39,8 @@ public class QuanLyBanDieuKhien implements Initializable{
     private TextField txtViTri;
     @FXML
     private TextField txtMoTa;
+    @FXML
+    private TextField txtTimKiem;
     @FXML
     private TableView<QuanLyBan> tbvQLBan;
     @FXML
@@ -140,10 +145,39 @@ public class QuanLyBanDieuKhien implements Initializable{
         }
     }
     
+    @FXML
+    void TimKiemBan() throws SQLException {
+        dulieu = QuanLyBan_DichVu.layDuLieuBan();
+        tbvQLBan.setItems(dulieu);
+        FilteredList<QuanLyBan> duLieuLoc = new FilteredList<>(dulieu, a -> true);
+        txtTimKiem.textProperty().addListener((o, gtriCu, gtriMoi) -> {
+            duLieuLoc.setPredicate(ban -> {
+                if (gtriMoi == null || gtriMoi.isEmpty()){ //Neu ko tim kiem se hien thi tat ca ban
+                    return true;
+                }
+                String chuThuong = gtriMoi.toLowerCase();
+                
+                if(ban.getViTri().toLowerCase().indexOf(chuThuong) != -1) {
+                    return true; //Tim theo vi tri
+                } else if(ban.getMoTa().toLowerCase().indexOf(chuThuong) != -1) {
+                    return true; //Tim theo mo ta
+                } else 
+                    if(String.valueOf(ban.getMaBan()).indexOf(chuThuong) != -1) {
+                        return true; //Tim theo ma ban
+                    } else
+                        return false; //Ko tim thay 
+            });
+        });
+        SortedList<QuanLyBan> duLieuSX = new SortedList<>(duLieuLoc);
+        duLieuSX.comparatorProperty().bind(tbvQLBan.comparatorProperty());
+        tbvQLBan.setItems(duLieuSX);
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
             HienThiDSBan();
+            TimKiemBan();
             
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyBanDieuKhien.class.getName()).log(Level.SEVERE, null, ex);

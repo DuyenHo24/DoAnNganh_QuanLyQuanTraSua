@@ -70,6 +70,8 @@ public class DangNhapDieuKhien implements Initializable{
             if (kqua.next()){
 
                 Alert a = new Alert(Alert.AlertType.INFORMATION);
+                a.setTitle("Thông báo");
+                a.setHeaderText("Thông báo");
                 a.setContentText("Đăng nhập thành công");
                 a.showAndWait();
                 

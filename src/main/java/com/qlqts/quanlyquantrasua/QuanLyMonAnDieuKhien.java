@@ -10,6 +10,8 @@ import com.qlqts.quanlyquantrasua.dichvu.QuanLyMonAn_DichVu;
 import com.qlqts.quanlyquantrasua.pojo.QuanLyBan;
 import com.qlqts.quanlyquantrasua.pojo.QuanLyLoaiMon;
 import com.qlqts.quanlyquantrasua.pojo.QuanLyMonAn;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -18,6 +20,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,7 +30,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
 
 /**
  *
@@ -47,6 +57,9 @@ public class QuanLyMonAnDieuKhien implements Initializable{
     
     @FXML
     private TextField txtLoaiMon;
+    
+    @FXML
+    private TextField txtTimKiem;
 
     @FXML
     private TableView<QuanLyMonAn> tbvQLMA;
@@ -65,6 +78,20 @@ public class QuanLyMonAnDieuKhien implements Initializable{
 
     @FXML
     private TableColumn<QuanLyMonAn, String> cotLoaiMon;
+    
+    @FXML
+    private ImageView khungHinh;
+    @FXML
+    private Image hinh;
+    @FXML
+    private FileInputStream fi;
+    private File f;
+    @FXML
+    private FileChooser fc;
+    @FXML
+    private AnchorPane luoi;
+    private Stage s;
+    //private Desktop hdh = Desktop.getDesktop();
     
     @FXML
     private TextField txtMaLoai;
@@ -107,6 +134,8 @@ public class QuanLyMonAnDieuKhien implements Initializable{
             qlma.setDvt(txtDVT.getText());
             qlma.setGiaTien(Float.parseFloat(txtGiaTien.getText()));
             qlma.setLoaiMon(txtLoaiMon.getText());
+            //f = new FileInputStream(f1);
+            
             try {
                 QuanLyMonAn_DichVu.themMonAn(qlma);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -184,6 +213,49 @@ public class QuanLyMonAnDieuKhien implements Initializable{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Xóa món ăn không thành công. Vui lòng thử lại sau");
             alert.showAndWait();
+        }
+    }
+    
+    @FXML
+    void TimKiemMonAn() throws SQLException {
+        dulieu = QuanLyMonAn_DichVu.layDuLieuMonAn();
+        tbvQLMA.setItems(dulieu);
+        FilteredList<QuanLyMonAn> duLieuLoc = new FilteredList<>(dulieu, a -> true);
+        txtTimKiem.textProperty().addListener((o, gtriCu, gtriMoi) -> {
+            duLieuLoc.setPredicate(ma -> {
+                if (gtriMoi == null || gtriMoi.isEmpty()){ //Neu ko tim kiem se hien thi tat ca mon an
+                    return true;
+                }
+                String chuThuong = gtriMoi.toLowerCase();
+                
+                if(ma.getTenMon().toLowerCase().indexOf(chuThuong) != -1) {
+                    return true; //Tim theo ten mon
+                } else if(ma.getDvt().toLowerCase().indexOf(chuThuong) != -1) {
+                    return true; //Tim theo don vi tinh
+                } else 
+                    if(ma.getLoaiMon().toLowerCase().indexOf(chuThuong) != -1) {
+                        return true; //Tim theo loai mon
+                    } else
+                        return false; //Ko tim thay 
+            });
+        });
+        SortedList<QuanLyMonAn> duLieuSX = new SortedList<>(duLieuLoc);
+        duLieuSX.comparatorProperty().bind(tbvQLMA.comparatorProperty());
+        tbvQLMA.setItems(duLieuSX);
+    }
+    
+    @FXML
+    private void ChonHinh(ActionEvent a){
+        s = (Stage) luoi.getScene().getWindow();
+        fc = new FileChooser();
+        fc.setTitle("Chọn Hình");
+        fc.getExtensionFilters()
+                .addAll(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg"));
+        f = fc.showOpenDialog(s);
+        
+        if (f != null){
+            hinh = new Image(f.toURI().toString());
+            khungHinh.setImage(hinh);
         }
     }
     
@@ -266,14 +338,22 @@ public class QuanLyMonAnDieuKhien implements Initializable{
                 a.showAndWait();
             }
     }
+    
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
             HienThiDSMonAn();
             HienThiDanhSachLoaiMon();
+            TimKiemMonAn();
+            
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyMonAnDieuKhien.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
     }
+    
+    
 }

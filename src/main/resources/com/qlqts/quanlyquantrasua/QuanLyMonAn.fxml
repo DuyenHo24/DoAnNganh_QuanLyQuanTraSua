@@ -10,11 +10,12 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="796.0" prefWidth="1283.0" style="-fx-background-color: #D9EDFF;" stylesheets="@css/QuanLyMonAn.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlqts.quanlyquantrasua.QuanLyMonAnDieuKhien">
+<AnchorPane id="AnchorPane" fx:id="luoi" prefHeight="752.0" prefWidth="1283.0" style="-fx-background-color: #D9EDFF;" stylesheets="@css/QuanLyMonAn.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlqts.quanlyquantrasua.QuanLyMonAnDieuKhien">
    <children>
-      <Label fx:id="lbQLMA" layoutX="320.0" layoutY="14.0" prefHeight="58.0" prefWidth="447.0" text="QUẢN LÝ MÓN ĂN" />
-      <GridPane layoutX="36.0" layoutY="77.0" prefHeight="236.0" prefWidth="251.0">
+      <Label fx:id="lbQLMA" layoutX="312.0" layoutY="7.0" prefHeight="58.0" prefWidth="447.0" text="QUẢN LÝ MÓN ĂN" />
+      <GridPane layoutX="14.0" layoutY="78.0" prefHeight="217.0" prefWidth="265.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="127.33331298828125" minWidth="10.0" prefWidth="81.3333257039388" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="195.0" />
@@ -39,7 +40,7 @@
             <TextField fx:id="txtLoaiMon" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <TableView fx:id="tbvQLMA" layoutX="306.0" layoutY="83.0" onMouseClicked="#LayDLTuBangVoTxt" prefHeight="557.0" prefWidth="484.0">
+      <TableView fx:id="tbvQLMA" layoutX="306.0" layoutY="120.0" onMouseClicked="#LayDLTuBangVoTxt" prefHeight="531.0" prefWidth="484.0">
          <columns>
             <TableColumn fx:id="cotMaMon" prefWidth="60.66668701171875" text="Mã Món" />
             <TableColumn fx:id="cotTenMon" prefWidth="176.66671752929688" text="Tên Món" />
@@ -48,11 +49,11 @@
             <TableColumn fx:id="cotLoaiMon" prefWidth="73.99993896484375" text="Loại Món" />
          </columns>
       </TableView>
-      <Button layoutX="176.0" layoutY="518.0" mnemonicParsing="false" onAction="#SuaMonAn" prefHeight="52.0" prefWidth="87.0" text="SỬA" />
-      <Button layoutX="51.0" layoutY="580.0" mnemonicParsing="false" onAction="#XoaMonAn" prefHeight="52.0" prefWidth="87.0" text="XÓA" />
-      <Button layoutX="176.0" layoutY="580.0" mnemonicParsing="false" onAction="#QuayLai" prefHeight="52.0" prefWidth="87.0" text="QUAY LẠI" />
-      <Button layoutX="51.0" layoutY="518.0" mnemonicParsing="false" onAction="#ThemMonAn" prefHeight="52.0" prefWidth="87.0" text="THÊM" />
-      <ImageView fitHeight="180.0" fitWidth="200.0" layoutX="62.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="181.0" layoutY="537.0" mnemonicParsing="false" onAction="#SuaMonAn" prefHeight="52.0" prefWidth="87.0" text="SỬA" />
+      <Button layoutX="56.0" layoutY="599.0" mnemonicParsing="false" onAction="#XoaMonAn" prefHeight="52.0" prefWidth="87.0" text="XÓA" />
+      <Button layoutX="181.0" layoutY="599.0" mnemonicParsing="false" onAction="#QuayLai" prefHeight="52.0" prefWidth="87.0" text="QUAY LẠI" />
+      <Button layoutX="56.0" layoutY="537.0" mnemonicParsing="false" onAction="#ThemMonAn" prefHeight="52.0" prefWidth="87.0" text="THÊM" />
+      <ImageView fx:id="khungHinh" fitHeight="217.0" fitWidth="219.0" layoutX="14.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true" />
       <AnchorPane layoutX="801.0" layoutY="14.0" prefHeight="629.0" prefWidth="467.0" style="-fx-background-color: #D1FEFF;">
          <children>
             <Label fx:id="lbLM" layoutX="143.0" layoutY="36.0" prefHeight="58.0" prefWidth="219.0" text="LOẠI MÓN" />
@@ -71,5 +72,12 @@
             <Button layoutX="339.0" layoutY="567.0" mnemonicParsing="false" onAction="#XoaLoaiMon" prefHeight="52.0" prefWidth="78.0" text="XÓA" />
          </children>
       </AnchorPane>
+      <Button layoutX="236.0" layoutY="406.0" mnemonicParsing="false" onAction="#ChonHinh" prefHeight="42.0" prefWidth="65.0" text="CHỌN" />
+      <Label layoutX="411.0" layoutY="81.0" prefHeight="20.0" prefWidth="79.0" text="Tìm Kiếm">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtTimKiem" layoutX="490.0" layoutY="78.0" prefHeight="26.0" prefWidth="170.0" promptText="Nhập thông tin cần tìm" />
    </children>
 </AnchorPane>

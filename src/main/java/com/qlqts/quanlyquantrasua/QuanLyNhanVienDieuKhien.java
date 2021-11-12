@@ -6,7 +6,6 @@
 package com.qlqts.quanlyquantrasua;
 
 import com.qlqts.quanlyquantrasua.dichvu.QuanLyNhanVien_dichvu;
-import com.qlqts.quanlyquantrasua.pojo.QuanLyBan;
 import com.qlqts.quanlyquantrasua.pojo.QuanLyNhanVien;
 import java.io.IOException;
 import java.net.URL;
@@ -16,12 +15,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -49,6 +48,8 @@ public class QuanLyNhanVienDieuKhien implements Initializable{
     private TextField txtEmail;
     @FXML
     private TextField txtChucVu;
+    @FXML
+    private TextField txtTimKiem;
     @FXML
     private TableView<QuanLyNhanVien> tbvQLNV;
     @FXML
@@ -163,10 +164,41 @@ public class QuanLyNhanVienDieuKhien implements Initializable{
         }
     }
 
+    @FXML
+    void TimKiemNV() throws SQLException {
+        dulieu = QuanLyNhanVien_dichvu.layDuLieuNV();
+        tbvQLNV.setItems(dulieu);
+        FilteredList<QuanLyNhanVien> duLieuLoc = new FilteredList<>(dulieu, a -> true);
+        txtTimKiem.textProperty().addListener((o, gtriCu, gtriMoi) -> {
+            duLieuLoc.setPredicate(nv -> {
+                if (gtriMoi == null || gtriMoi.isEmpty()){ //Neu ko tim kiem se hien thi tat ca nhan vien
+                    return true;
+                }
+                String chuThuong = gtriMoi.toLowerCase();
+                
+                if(nv.getHoNV().toLowerCase().indexOf(chuThuong) != -1) {
+                    return true; //Tim theo ho NV
+                } else if(nv.getTenNV().toLowerCase().indexOf(chuThuong) != -1) {
+                    return true; //Tim theo ten NV
+                } else if(nv.getSdt().toLowerCase().indexOf(chuThuong) != -1) {
+                    return true; //Tim theo SDT
+                } else 
+                    if(nv.getChucVu().toLowerCase().indexOf(chuThuong) != -1) {
+                        return true; //Tim theo chuc vu
+                    } else
+                        return false; //Ko tim thay 
+            });
+        });
+        SortedList<QuanLyNhanVien> duLieuSX = new SortedList<>(duLieuLoc);
+        duLieuSX.comparatorProperty().bind(tbvQLNV.comparatorProperty());
+        tbvQLNV.setItems(duLieuSX);
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
             HienThiDSNhanVien();
+            TimKiemNV();
             
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyNhanVienDieuKhien.class.getName()).log(Level.SEVERE, null, ex);

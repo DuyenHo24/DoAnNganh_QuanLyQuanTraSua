@@ -17,3 +17,6 @@ and open the template in the editor.
     -fx-background-color: #FAB180;
     -fx-font-family: "SVN-Gotham Bold";
 }
+.label {
+    -fx-font-family: "SVN-Gotham Bold";
+}

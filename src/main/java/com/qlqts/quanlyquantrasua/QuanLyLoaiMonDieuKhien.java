@@ -15,7 +15,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -34,6 +35,8 @@ public class QuanLyLoaiMonDieuKhien implements Initializable{
     private TextField txtMaLoai;
     @FXML
     private TextField txtLoaiMon;
+    @FXML
+    private TextField txtTimKiem;
     @FXML
     private TableView<QuanLyLoaiMon> tbvQLLM;
     @FXML
@@ -126,6 +129,32 @@ public class QuanLyLoaiMonDieuKhien implements Initializable{
     }
     
     @FXML
+    void TimKiemLoaiMon() throws SQLException {
+        dulieu = QuanLyLoaiMon_DichVu.layDLLoaiMon();
+        tbvQLLM.setItems(dulieu);
+        FilteredList<QuanLyLoaiMon> duLieuLoc = new FilteredList<>(dulieu, a -> true);
+        txtTimKiem.textProperty().addListener((o, gtriCu, gtriMoi) -> {
+            duLieuLoc.setPredicate(lm -> {
+                if (gtriMoi == null || gtriMoi.isEmpty()){ //Neu ko tim kiem se hien thi tat ca loai mon
+                    return true;
+                }
+                String chuThuong = gtriMoi.toLowerCase();
+                
+                if(lm.getTenLoai().toLowerCase().indexOf(chuThuong) != -1) {
+                    return true; //Tim theo ten loai
+                } else 
+                    if(String.valueOf(lm.getMaLoai()).indexOf(chuThuong) != -1) {
+                        return true; //Tim theo ma loai
+                    } else
+                        return false; //Ko tim thay 
+            });
+        });
+        SortedList<QuanLyLoaiMon> duLieuSX = new SortedList<>(duLieuLoc);
+        duLieuSX.comparatorProperty().bind(tbvQLLM.comparatorProperty());
+        tbvQLLM.setItems(duLieuSX);
+    }
+    
+    @FXML
     public void QuayLai() throws IOException{
         App.setRoot("ChonChucNangQuanLy");
     }
@@ -134,6 +163,7 @@ public class QuanLyLoaiMonDieuKhien implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         try {
             HienThiDanhSachLoaiMon();
+            TimKiemLoaiMon();
         } catch (SQLException e) {
             Logger.getLogger(QuanLyLoaiMonDieuKhien.class.getName()).log(Level.SEVERE, null, e);
         }
